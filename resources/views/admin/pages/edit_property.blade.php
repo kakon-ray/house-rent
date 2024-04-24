@@ -15,20 +15,22 @@
         </div>
         @endif
         
-        <form method="POST" action="/dashboard/add-rent-house/submit" enctype="multipart/form-data">
+        <form method="POST" action="/dashboard/edit-rent-house/submit" enctype="multipart/form-data">
             @csrf
+            <input type="text" value="{{$houserent->id}}" name="id" class="d-none">
             <div class="my-4">
               <label class="form-label"><b>Title</b></label>
               <input id="title" type="text" class="form-control" name="title" required autofocus
-                placeholder="Enter House Title">
+                value="{{$houserent->title}}">
             </div>
             <div class="my-4">
               <label class="form-label"><b>Catagory</b></label>
               <select class="form-control" name="catagory" aria-label="Default select example">
                 <option selected>Open this select menu</option>
                 @foreach ($category as $item)
-                 <option value="{{$item->category_slug}}">{{$item->category_name}}</option>
-                @endforeach
+                <option value="{{$item->category_slug}}" {{$houserent->catagory == $item->category_slug ? 'selected' : ''}}>{{$item->category_name}}</option>
+               @endforeach
+               
               </select>
             </div>
          
@@ -36,60 +38,61 @@
             <div class="my-4">
               <label class="form-label"><b>Rent Amount</b></label>
               <input type="text" class="form-control" name="amount" required autofocus
-                placeholder="House Amount">
+              value="{{$houserent->amount}}">
             </div>
         
             <div class="my-4">
               <label class="form-label"><b>Contact Number</b></label>
               <input type="text" class="form-control" name="number" required autofocus
-                placeholder="House Amount">
+              value="{{$houserent->number}}">
             </div>
         
             <div class="my-4">
               <label class="form-label"><b>Rent Month</b></label>
               <input type="date" class="form-control" name="rent_month" required autofocus
-                placeholder="House Time">
+              value="{{$houserent->rent_month}}">
             </div>
         
             <div class="my-4">
               <label class="form-label"><b>House Location</b></label>
               <input type="text" class="form-control" name="house_location" autofocus
-                placeholder="House Time">
+              value="{{$houserent->house_location}}">
             </div>
         
             <div class="my-4">
               <label class="form-label"><b>House Size</b></label>
               <input type="text" class="form-control" name="size" autofocus
-                placeholder="House Time">
+              value="{{$houserent->size}}">
             </div>
         
             <div class="my-4">
               <label class="form-label"><b>Room</b></label>
               <input type="number" class="form-control" name="room" required autofocus
-                placeholder="House Time">
+              value="{{$houserent->room}}">
             </div>
         
             <div class="my-4">
               <label class="form-label"><b>Bath Room</b></label>
               <input type="number" class="form-control" name="bath_room" required autofocus
-                placeholder="House Time">
+              value="{{$houserent->bath_room}}">
             </div>
         
             <div class="my-4">
               <label class="form-label"><b>Kitchen Room</b></label>
               <input type="number" class="form-control" name="kitchen_room" required autofocus
-                placeholder="House Time">
+              value="{{$houserent->kitchen_room}}">
             </div>
         
             <div class="my-4">
               <label class="form-label"><b>House Image</b></label>
               <input id="save_img" name="img" type="file" class="form-control">
+              <input value="{{$houserent->img}}" name="old_img" type="text" class="d-none">
             </div>
         
             <div class="my-4">
         
               <label class="form-label"><b>Package Description</b></label>
-              <textarea class="form-control" rows="7" cols="7" name="desc" placeholder="Description..."></textarea>
+              <textarea class="form-control" rows="7" cols="7" name="desc">{{$houserent->desc}}</textarea>
             </div>
         
         

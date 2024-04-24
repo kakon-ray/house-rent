@@ -21,11 +21,37 @@
             </p>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a href="/dashboard/add-category" class="nav-link">
+            <i class="nav-icon fa-solid fa-house"></i>
+            <p>
+              Add Category
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/dashboard/manage-category" class="nav-link">
+            <i class="nav-icon fa-solid fa-house"></i>
+            <p>
+              Manage Category
+            </p>
+          </a>
+        </li>
+
         <li class="nav-item">
           <a href="/dashboard/add-property" class="nav-link">
             <i class="nav-icon fa-solid fa-house"></i>
             <p>
               Add Property
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/dashboard/manage-property" class="nav-link">
+            <i class="nav-icon fa-solid fa-house"></i>
+            <p>
+              Manage Property
             </p>
           </a>
         </li>
