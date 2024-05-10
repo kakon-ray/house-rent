@@ -438,3 +438,9 @@
     padding-right: 0;
     border-right: none;
 }
+
+.property-item img {
+    transition: .5s;
+    height: 273px;
+    width: 100%;
+}

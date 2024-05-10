@@ -6,7 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -15,17 +16,27 @@ class AuthController extends Controller
         return view('admin.pages.register');
     }
 
-    public function signup(Request $req)
+    public function signup(Request $request)
     {
-        // $req->validate([
-        //     'name' => 'required'
-        // ]);
+
+
+        $validator =  Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+
+        if ($validator->fails()) {
+
+            return $validator->errors();
+        }
 
         $data = ([
-            'name' => $req->name,
-            'email' => $req->email,
-            'address' => $req->address,
-            'password' => Hash::make($req->password)
+            'name' => $request->name,
+            'role' => 'user',
+            'email' => $request->email,
+            'address' => $request->address,
+            'password' => Hash::make($request->password)
         ]);
 
         User::create($data);
@@ -39,18 +50,15 @@ class AuthController extends Controller
 
     public function loginCheck(Request $request)
     {
-        if(Auth::guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password])){
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('admin');
-        }else{
+        } else {
             return redirect()->route('home');
-            
         }
-     
-      
-        }
+    }
 
-     
-    
+
+
 
     public function logout()
     {
@@ -58,6 +66,4 @@ class AuthController extends Controller
 
         return redirect()->route('login');
     }
-
-
 }

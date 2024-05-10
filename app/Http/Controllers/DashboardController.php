@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\HouseRent;
 use Database\Seeders\HourseRent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class DashboardController extends Controller
@@ -77,7 +78,7 @@ class DashboardController extends Controller
             'category_name' => 'required',
         ]);
 
-        $slug = Str::slug($request->category_name);
+             $slug = Str::slug($request->category_name);
 
              
             $responce = Category::where('id',$request->id)->update([
@@ -113,6 +114,7 @@ class DashboardController extends Controller
   
     public function add_property_submit(Request $request)
     {
+
         $validator = $request->validate([
             'title' => 'required',
             'catagory' => 'required',
@@ -138,6 +140,7 @@ class DashboardController extends Controller
 
 
         $responce = HouseRent::insert([
+            'user_id' => Auth::guard('admin')->user()->id,
             'title' => $request->title,
             'catagory' => $request->catagory,
             'amount' => $request->amount,
@@ -217,7 +220,7 @@ class DashboardController extends Controller
 
     public function manage_property()
     {   
-        $all_property = HouseRent::all();
+        $all_property = HouseRent::where('user_id',Auth::guard('admin')->user()->id)->get();
         return view('admin.pages.manage_property',compact('all_property'));
     }
 

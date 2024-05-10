@@ -11,8 +11,10 @@ use Illuminate\Contracts\Auth\Authenticatable;
 class User extends AuthenticatableUser implements Authenticatable
 {
     use HasFactory, Notifiable;
+    
     protected $fillable = [
         'name',
+        'role',
         'email',
         'password',
         'address',

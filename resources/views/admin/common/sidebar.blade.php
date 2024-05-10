@@ -22,6 +22,7 @@
           </a>
         </li>
 
+    @if(Auth::guard('admin')->user()->role == 'admin')
         <li class="nav-item">
           <a href="/dashboard/add-category" class="nav-link">
             <i class="nav-icon fa-solid fa-house"></i>
@@ -38,6 +39,8 @@
             </p>
           </a>
         </li>
+
+        @endif
 
         <li class="nav-item">
           <a href="/dashboard/add-property" class="nav-link">

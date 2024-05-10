@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('house_rents', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->nullable();
             $table->string('title')->nullable();
             $table->string('catagory')->nullable();
             $table->string('amount')->nullable();
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->string('bath_room')->nullable();
             $table->string('kitchen_room')->nullable();
             $table->string('img')->nullable();
-            $table->string('desc')->nullable();
+            $table->text('desc')->nullable();
             $table->timestamps();
         });
     }

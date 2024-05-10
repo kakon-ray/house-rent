@@ -9,94 +9,20 @@
                 sit. Ipsum diam justo sed rebum vero dolor duo.</p>
         </div>
         <div class="row g-4">
+            @foreach($category as $category_item)
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                 <a class="cat-item d-block bg-light text-center rounded p-3" href="">
                     <div class="rounded p-4">
                         <div class="icon mb-3">
                             <img class="img-fluid" src="{{asset('frontend/img/icon-apartment.png')}}" alt="Icon">
                         </div>
-                        <h6>Apartment</h6>
+                        <h6>{{$category_item->category_name  }}</h6>
                         <span>123 Properties</span>
                     </div>
                 </a>
             </div>
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                    <div class="rounded p-4">
-                        <div class="icon mb-3">
-                            <img class="img-fluid" src="{{asset('frontend/img/icon-villa.png')}}" alt="Icon">
-                        </div>
-                        <h6>Villa</h6>
-                        <span>123 Properties</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                    <div class="rounded p-4">
-                        <div class="icon mb-3">
-                            <img class="img-fluid" src="{{asset('frontend/img/icon-house.png')}}" alt="Icon">
-                        </div>
-                        <h6>Home</h6>
-                        <span>123 Properties</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                    <div class="rounded p-4">
-                        <div class="icon mb-3">
-                            <img class="img-fluid" src="{{asset('frontend/img/icon-housing.png')}}" alt="Icon">
-                        </div>
-                        <h6>Office</h6>
-                        <span>123 Properties</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                    <div class="rounded p-4">
-                        <div class="icon mb-3">
-                            <img class="img-fluid" src="{{asset('frontend/img/icon-building.png')}}" alt="Icon">
-                        </div>
-                        <h6>Building</h6>
-                        <span>123 Properties</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                    <div class="rounded p-4">
-                        <div class="icon mb-3">
-                            <img class="img-fluid" src="{{asset('frontend/img/icon-neighborhood.png')}}" alt="Icon">
-                        </div>
-                        <h6>Townhouse</h6>
-                        <span>123 Properties</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                    <div class="rounded p-4">
-                        <div class="icon mb-3">
-                            <img class="img-fluid" src="{{asset('frontend/img/icon-condominium.png')}}" alt="Icon">
-                        </div>
-                        <h6>Shop</h6>
-                        <span>123 Properties</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                    <div class="rounded p-4">
-                        <div class="icon mb-3">
-                            <img class="img-fluid" src="{{asset('frontend/img/icon-luxury.png')}}" alt="Icon">
-                        </div>
-                        <h6>Garage</h6>
-                        <span>123 Properties</span>
-                    </div>
-                </a>
-            </div>
+            @endforeach
+
         </div>
     </div>
 </div>
@@ -255,31 +181,6 @@
 
 
 
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="bg-light rounded p-3">
-            <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                        <img class="img-fluid rounded w-100" src="{{asset('frontend/img/call-to-action.jpg')}}" alt="">
-                    </div>
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                        <div class="mb-4">
-                            <h1 class="mb-3">Contact With Our Certified Agent</h1>
-                            <p>Eirmod sed ipsum dolor sit rebum magna erat. Tempor lorem kasd vero ipsum sit sit diam
-                                justo sed vero dolor duo.</p>
-                        </div>
-                        <a href="" class="btn btn-primary py-3 px-4 me-2"><i class="fa fa-phone-alt me-2"></i>Make A
-                            Call</a>
-                        <a href="" class="btn btn-dark py-3 px-4"><i class="fa fa-calendar-alt me-2"></i>Get
-                            Appoinment</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Call to Action End -->
 
 
 <!-- Team Start -->
