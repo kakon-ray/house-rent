@@ -43,3 +43,13 @@ Route::post('/dashboard/property-delete', [DashboardController::class, 'delete_p
 // update 
 Route::get('/dashboard/edit-property/{id}', [DashboardController::class, 'edit_property'])->middleware('AdminMiddleware');
 Route::post('/dashboard/edit-rent-house/submit', [DashboardController::class, 'edit_property_submit'])->middleware('AdminMiddleware');
+
+
+// Agents 
+
+Route::get('/dashboard/add-agents', [DashboardController::class, 'add_agents'])->middleware('AdminMiddleware');
+Route::post('/dashboard/add-agent/submit', [DashboardController::class, 'add_agents_submit'])->middleware('AdminMiddleware');
+Route::post('/dashboard/edit-agent/submit', [DashboardController::class, 'edit_agents_submit'])->middleware('AdminMiddleware');
+Route::get('/dashboard/manage', [DashboardController::class, 'manage_agents'])->middleware('AdminMiddleware');
+Route::post('/dashboard/delete-agents', [DashboardController::class, 'delete_agents'])->middleware('AdminMiddleware');
+Route::get('/dashboard/edit-agents/{id}', [DashboardController::class, 'edit_agents'])->middleware('AdminMiddleware');

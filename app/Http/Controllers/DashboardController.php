@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agents;
 use App\Models\Category;
 use App\Models\HouseRent;
 use Database\Seeders\HourseRent;
@@ -234,5 +235,110 @@ class DashboardController extends Controller
             return redirect()->back()->with('error','Deleting Faild');
         }
     }
+
+
+    public function add_agents(Request $request){
+        return view('admin.pages.agents.add');
+    }
+
+    public function add_agents_submit(Request $request){
+
+        $validator = $request->validate([
+            'name' => 'required',
+            'img' => 'required',
+            'phone' => 'required',
+            'facebook' => 'required',
+            'twitter' => 'required',
+            'pinter' => 'required',
+        ]);
+
+
+
+        $img = $request->img;
+
+        $img =  $img->store('/public/img');
+        $img=(explode('/',$img))[2];
+        $host=$_SERVER['HTTP_HOST'];
+        $img="http://".$host."/storage/img/".$img;
+
+
+        $responce = Agents::insert([
+            'name' => $request->name,
+            'img' => $img,
+            'phone' => $request->phone,
+            'facebook' => $request->facebook,
+            'twitter' => $request->twitter,
+            'pinter' => $request->pinter,
+        ]);
+
+        if($responce == 1){
+            return redirect()->back()->with('success','Successfully Submited');
+        }else{
+            return redirect()->back()->with('error','Faild Submited');
+        }
+    }
+
+    
+    public function manage_agents(Request $request){
+        $agents = Agents::get();
+        return view('admin.pages.agents.manage',compact('agents'));
+    }
+    public function delete_agents(Request $request){
+
+        $delete_agents = Agents::where('id',$request->id)->delete();
+
+        if($delete_agents){
+            return redirect()->back()->with('success','Delete Successfully');
+        }else{
+            return redirect()->back()->with('error','Deleting Faild');
+        }
+    }
+
+    public function edit_agents(Request $request){
+        $find_agents = Agents::find($request->id);
+        return view('admin.pages.agents.edit',compact('find_agents'));
+    }
+    public function edit_agents_submit(Request $request){
+
+        $validator = $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'facebook' => 'required',
+            'twitter' => 'required',
+            'pinter' => 'required',
+        ]);
+
+
+
+
+
+        if($request->img){
+            $img = $request->img;
+
+            $img =  $img->store('/public/img');
+            $img=(explode('/',$img))[2];
+            $host=$_SERVER['HTTP_HOST'];
+            $img="http://".$host."/storage/img/".$img;
+        }else{
+            $img = $request->old_img;
+        }
+
+
+        $responce = Agents::where('id', $request->id)->update([
+            'name' => $request->name,
+            'img' => $img,
+            'phone' => $request->phone,
+            'facebook' => $request->facebook,
+            'twitter' => $request->twitter,
+            'pinter' => $request->pinter,
+        ]);
+
+        if($responce == 1){
+            return redirect()->back()->with('success','Successfully Updated');
+        }else{
+            return redirect()->back()->with('error','Faild Updated');
+        }
+    }
+
 
 }
