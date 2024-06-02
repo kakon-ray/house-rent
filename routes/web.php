@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/details/{id}', [HomeController::class, 'details'])->name('details');
 
 
 
@@ -35,6 +36,9 @@ Route::post('/dashboard/edit-category/submit', [DashboardController::class, 'edi
 
 // property add page show and submit
 Route::get('/dashboard/add-property', [DashboardController::class, 'add_property'])->middleware('AdminMiddleware');
+Route::get('/dashboard/request', [DashboardController::class, 'request_property'])->middleware('AdminMiddleware');
+Route::get('/dashboard/approve/{id}', [DashboardController::class, 'request_property_submit'])->middleware('AdminMiddleware');
+Route::get('/dashboard/cancle/{id}', [DashboardController::class, 'request_property_cancle'])->middleware('AdminMiddleware');
 Route::post('/dashboard/add-rent-house/submit', [DashboardController::class, 'add_property_submit'])->middleware('AdminMiddleware');
 
 // property manage

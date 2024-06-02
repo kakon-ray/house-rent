@@ -81,10 +81,11 @@
             <div id="tab-1" class="tab-pane fade show p-0 active">
                 <div class="row g-4">
                     @foreach ($rent_house as $item)
+                    @if($item->status == 1)
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="property-item rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="{{$item->img}}" alt=""></a>
+                                <a href="{{url('/details',['id'=>$item->id])}}"><img class="img-fluid" src="{{$item->img}}" alt=""></a>
                                 <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For {{$item->catagory}}</div>
                                 <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Appartment</div>
                             </div>
@@ -102,6 +103,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                     @endforeach
                   
     
@@ -180,9 +182,6 @@
 <!-- Property List End -->
 
 
-
-
-
 <!-- Team Start -->
 <div class="container-xxl py-5">
     <div class="container">
@@ -213,7 +212,6 @@
         </div>
     </div>
 </div>
-
 
 
 @endsection

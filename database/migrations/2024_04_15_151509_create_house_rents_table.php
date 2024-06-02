@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id')->nullable();
             $table->string('title')->nullable();
+            $table->string('status')->default(0);
             $table->string('catagory')->nullable();
             $table->string('amount')->nullable();
             $table->string('number')->nullable();

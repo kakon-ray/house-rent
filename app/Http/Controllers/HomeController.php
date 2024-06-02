@@ -22,4 +22,9 @@ class HomeController extends Controller
     public function contact(){
         return view('user.contact');
     }
+
+    public function details(Request $request){
+        $property = HouseRent::where('id',$request->id)->first();
+        return view('user.details',compact('property'));
+    }
 }

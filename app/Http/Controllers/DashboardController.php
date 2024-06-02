@@ -341,4 +341,36 @@ class DashboardController extends Controller
     }
 
 
+    public function request_property(Request $request){
+        $all_property = HouseRent::get();
+        return view('admin.pages.house_request',compact('all_property'));
+    }
+
+
+    public function request_property_submit(Request $request){
+       
+        $approve = HouseRent::where('id',$request->id)->update([
+            'status'=> 1,
+        ]);
+
+        if($approve){
+            return redirect()->back()->with('success', 'Approved');  
+        }else{
+            return redirect()->back()->with('error', 'Faild');  
+        }
+    }
+    public function request_property_cancle(Request $request){
+       
+        $approve = HouseRent::where('id',$request->id)->update([
+            'status'=> false,
+        ]);
+
+        if($approve){
+            return redirect()->back()->with('success', 'Cancled');  
+        }else{
+            return redirect()->back()->with('error', 'Faild');  
+        }
+    }
+
+
 }
