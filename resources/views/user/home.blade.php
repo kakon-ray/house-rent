@@ -115,6 +115,7 @@
             <div id="tab-2" class="tab-pane fade show p-0">
                 <div class="row g-4">
                     @foreach ($rent_house as $item)
+                    @if($item->status == 1)
                     @if($item->catagory == 'sell')
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="property-item rounded overflow-hidden">
@@ -138,6 +139,7 @@
                         </div>
                     </div>
                     @endif
+                    @endif
                     @endforeach
                     <div class="col-12 text-center">
                         <a class="btn btn-primary py-3 px-5" href="">Browse More Property</a>
@@ -147,6 +149,7 @@
             <div id="tab-3" class="tab-pane fade show p-0">
                 <div class="row g-4">
                     @foreach ($rent_house as $item)
+                    @if($item->status == 1)
                     @if($item->catagory == 'rent')
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="property-item rounded overflow-hidden">
@@ -169,6 +172,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                     @endif
                     @endforeach
                     <div class="col-12 text-center">
